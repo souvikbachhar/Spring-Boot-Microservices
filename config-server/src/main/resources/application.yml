@@ -1,0 +1,30 @@
+
+server:
+  port: 9295
+    
+spring:
+  profiles:
+    active: native
+  application:
+    name: CONFIG-SERVER
+  boot:
+    admin:
+      client:
+        instance:
+          service-base-url: http://localhost:9295
+        url:
+          - http://localhost:9090
+
+                 
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/souvikbachhar/Spring-Boot-Microservices
+          clone-on-start: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #<2>             

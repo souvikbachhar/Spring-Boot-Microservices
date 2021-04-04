@@ -1,0 +1,22 @@
+server:
+   port: 9090
+spring:
+   application:
+      name: ADMIN-SERVER
+   boot:
+    admin:
+      notify:
+        mail:
+          to:
+            - souvik.bachhar@yahoo.com   
+   mail:
+    host: smtp.gmail.com
+    port: 587
+    username: bachharsouvik@gmail.com
+    password: aghnroxmhwftsryb 
+    properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                enable: true
