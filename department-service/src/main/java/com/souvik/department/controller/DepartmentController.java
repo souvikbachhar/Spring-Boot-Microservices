@@ -1,6 +1,8 @@
 package com.souvik.department.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,9 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
 	
+	@Autowired
+	Environment environment;
+	
 	@PostMapping("/")
 	public Department saveDepartment(@RequestBody Department department){
 		log.info("inside saveDepartment departmentController");
@@ -29,7 +34,7 @@ public class DepartmentController {
 	
 	@GetMapping("{id}")
 	public Department findDepartmentById(@PathVariable("id") Long departmentId){
-		log.info("inside findDepartmentById departmentController");
+		log.info("inside findDepartmentById departmentController" + environment.getProperty("local.server.port"));
 		return departmentService.findDepartmentById(departmentId);
 				
 	}

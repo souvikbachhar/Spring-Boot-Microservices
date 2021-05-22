@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.souvik.user.entity.User;
+import com.souvik.user.proxy.DepartmentServiceClient;
 import com.souvik.user.repository.UserRepository;
 import com.souvik.user.vo.Department;
 import com.souvik.user.vo.ResponseTemplateVO;
@@ -22,6 +23,9 @@ public class UserService {
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private DepartmentServiceClient dClient;
 
 	public User saveUser(User user) {
 		log.info("inside saveUser");
@@ -32,7 +36,8 @@ public class UserService {
 		log.info("inside getUserWithDepartment");
 		ResponseTemplateVO vo= new ResponseTemplateVO();
 		User user= userRepository.findByUserId(userId);
-		Department department= restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/"+user.getDepartmentId(), Department.class);
+		//Department department= restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/"+user.getDepartmentId(), Department.class);
+		Department department= dClient.findDepartmentById(userId);
 		vo.setUser(user);
 		vo.setDepartment(department);
 		return vo;
