@@ -1,7 +1,7 @@
 # Spring-Boot-Microservices
 Full Microservice architecture
 # Eureka Server,Eureka Client,Api Gateway,Cloud config
-# Hystrix Circuit Breaker,Spring Boot Admin,Feign Client
+# Hystrix Circuit Breaker,Feign Client
 # Load Balancer
-with email notification
+# Spring Boot Admin with email notification
 # Zipkin, Sleuth,Lombok
